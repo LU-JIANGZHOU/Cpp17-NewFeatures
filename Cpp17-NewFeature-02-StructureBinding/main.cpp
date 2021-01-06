@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -64,10 +65,33 @@ int main()
 
     for (vector<Point3D>::iterator it = points.begin(); it != points.end(); ++it)
     {
-      std::cout << ' ' << it->x <<" " << it->y <<" "<< it->z;
+      std::cout << ' ' << it->x << " " << it->y << " " << it->z;
       std::cout << '\n';
     }
   }
+  // 4 pair
+  {
+    std::pair<int, double> p{2, 2.0};
+    auto [i, d] = p;
+    std::cout << "The pair element are: " << i << " " << d << '\n';
+  }
+  //5 map
+  {
+    const std::map<int, std::string> countryCodes{
+        {65, "Singapore"},
+        {86, "China"},
+        {33, "France"},
+    };
 
+    for (const auto &[k, v] : countryCodes)
+      std::cout << k << " " << v << "\n";
+  }
+
+  //6tuple
+  {
+    const auto tpl = std::make_tuple(1, 'a', 2.3);
+    const auto [i, c, d] = tpl;
+    std::cout << "The tuple element are: " << i << " " << c << " " << d << '\n';
+  }
   return EXIT_SUCCESS;
 };
